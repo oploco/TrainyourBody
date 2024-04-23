@@ -1,0 +1,58 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+<script src="{% static 'scripts/script.js' %}">alert('jo');</script>
+
+<!--
+<form method="post" >
+    {% csrf_token %}
+    <select class="select-css" name="paramPartido" id="paramPartido">
+        {% for partido in partidos %}
+            <option value="{{ partido }}">{{ partido }}</option>
+        {% endfor %}
+    </select>
+    <input type="range" name="parametro_spinner" id="parametro_spinner" value="0" min="0" max="100" step="0.5" width="300px">
+    <output id="vSpinner"></output>
+    <button type="submit"> Trucar </button>
+</form>
+-->
+
+<form method="post" id="form_calories">
+    {% csrf_token %}
+    <label for="Gender">Sexo:</label>
+    <select class="select-css" name="Gender" id="Gender">
+        <option value="0">Masculino</option>
+        <option value="1">Femenino</option>
+    </select>
+
+    <label for="Age">Edad:</label>
+    <input type="number" name="Age" min="18" max="70" required id="Age">
+    <span class="input-addon">años</span>
+
+    <label for="Weight">Peso:</label>
+    <input type="number" name="Weight" value="65" min="30" max="140" id="Weight">
+    <span class="input-addon">kg.</span>
+
+    <label for="Height">Altura:</label>
+    <input type="number" name="Height" value="150" min="150" max="220" id="Height">
+    <span class="input-addon">cm.</span>
+
+    <label for="Duration">Duración ejercicio:</label>
+    <input type="number" name="Duration" value="10" min="10" max="360" id="Duration">
+    <span class="input-addon">min.</span>
+
+    <label for="Heart_Rate">Pulsaciones:</label>
+    <input type="range" name="Heart_Rate" id="Heart_Rate" value="0" min="100" max="180" step="1" width="350px">
+    <output id="vSpinner"></output>
+
+    <label for="Body_Temp">Temperatura estimada del cuerpo:</label>
+    <input type="number" name="Body_Temp" value="36" min="36" max="40" step="0.1" id="Body_Temp">
+    <span class="input-addon">ºC</span>
+
+    <button type="submit">Predecir</button>
+</form>
+<div class="calories-prediction">
+    <h2>Predicción de Calorías Quemadas</h2>
+    <p>Según el modelo de machine learning, se estima que quemarás:</p>
+    <p class="calories-result">{{ result }} calorías</p>
+</div>
